@@ -1,0 +1,19 @@
+node_modules
+*.js.map
+
+# BUild
+dist/
+build/
+
+# Environment
+.env
+.env.local
+
+# Prisma
+prisma/migrations/migration_lock.toml
+
+# Docker
+.docker /
+
+# IDE
+.vscode/

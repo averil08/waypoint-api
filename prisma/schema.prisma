@@ -1,0 +1,64 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+// ====== ENUMS =======
+enum VehicleType {
+    JEEPNEY
+    MODERNJEEP
+    TAXI
+}
+
+enum RouteStatus {
+    ACTIVE
+    INACTIVE
+    UNKNOWN
+}
+
+enum StopType {
+    TERMINAL
+    INTERCHANGE
+}
+
+// ====== MODELS ======
+model Route {
+    id              String        @id @default(uuid()) @map("id")
+    routeNumber     Int           @unique @map("route_number")
+    routeName       String        @map("route_name")
+    vehicleType     VehicleType   @map("vehicle_type")  
+    status          RouteStatus   @default(ACTIVE) @map("route_status")
+    createdAt       DateTime      @default(now())  @map ("created_at")
+    updatedAt       DateTime      @updatedAt       @map("updated_at")
+
+    routeStops      RouteStop[]
+}
+
+model RouteStop {
+    routeId         String         @map("route_id")
+    stopId          String         @map("stop_id")
+    sequence        Int            @map("sequence")
+    stopType        StopType       @map("stop_type")
+
+    route           Route          @relation(fields: [routeId], references: [id])
+    stop            Stop           @relation(fields: [stopId], references: [id])
+
+    @@id([routeId, stopId])  
+    @@index([routeId])
+    @@index([stopId])
+    @@map("route_stop")
+}
+
+model Stop {
+    id              String          @id @default(uuid())
+    name            String
+    latitude        Decimal         @db.Decimal(10, 8)
+    longitude       Decimal         @db.Decimal(11, 8)
+    routeStops      RouteStop[]
+    createdAt       DateTime        @default(now())
+    updatedAt       DateTime        @updatedAt
+}

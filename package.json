@@ -1,0 +1,39 @@
+{
+  "name": "waypoint-api",
+  "version": "1.0.0",
+  "description": "An open, developer-first REST & GeoJSON API providing geolocated, community-verified jeepney terminal and boarding-point (*paradahan*) data for Baguio City.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "prisma:seed": "prisma db seed",
+    "prisma:studio": "prisma studio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/averil08/waypoint-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/averil08/waypoint-api/issues"
+  },
+  "homepage": "https://github.com/averil08/waypoint-api#readme",
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.2.0",
+    "nodemon": "^3.1.14",
+    "prisma": "^6.19.3",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}
