@@ -44,13 +44,14 @@ model RouteStop {
     sequence        Int            @map("sequence")
     stopType        StopType       @map("stop_type")
 
-    route           Route          @relation(fields: [routeId], references: [id])
-    stop            Stop           @relation(fields: [stopId], references: [id])
+    route           Route          @relation(fields: [routeId], references: [id]) //references to Route.id (PK)
+    stop            Stop           @relation(fields: [stopId], references: [id]) //references to Stop.id (PK)
+    //routeId + stopId = connects FK to PK's of Route.id, Stop.id models
 
-    @@id([routeId, stopId])  
-    @@index([routeId])
-    @@index([stopId])
-    @@map("route_stop")
+    @@id([routeId, stopId]) //ensure route+stop cant exist twice
+    @@index([routeId]) //speeds up "get all stops for a route"
+    @@index([stopId]) //speeds "get all routes for a stop"
+    @@map("route_stop") //RouteStop references to table name in db
 }
 
 model Stop {
