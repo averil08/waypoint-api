@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { routeController } from "@/controllers/route.controller";
 
-const router = Router();
+const router: Router = Router();
 
 router.post("/", routeController.createRoute);
 router.get("/", routeController.getAllRoutes);
