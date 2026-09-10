@@ -10,7 +10,7 @@ export interface CreateStopInput {
 export interface UpdateStopInput {
     name?: string;
     latitude?: number;
-    longitud?: number;
+    longitude?: number;
 }
 
 export const stopRepository = {

@@ -22,30 +22,31 @@ enum RouteStatus {
 
 enum StopType {
     TERMINAL
-    INTERCHANGE
+    INTERMEDIATE
 }
 
 // ====== MODELS ======
 model Route {
-    id              String        @id @default(uuid()) @map("id")
-    routeNumber     Int           @unique @map("route_number")
-    routeName       String        @map("route_name")
-    vehicleType     VehicleType   @map("vehicle_type")  
-    status          RouteStatus   @default(ACTIVE) @map("route_status")
-    createdAt       DateTime      @default(now())  @map ("created_at")
-    updatedAt       DateTime      @updatedAt       @map("updated_at")
+    id          String      @id @default(uuid()) @map("id")
+    routeNumber Int         @unique @map("route_number")
+    routeName   String      @map("route_name")
+    vehicleType VehicleType @map("vehicle_type")
+    status      RouteStatus @default(ACTIVE) @map("route_status")
+    createdAt   DateTime    @default(now()) @map("created_at")
+    updatedAt   DateTime    @updatedAt @map("updated_at")
 
-    routeStops      RouteStop[]
+    routeStops RouteStop[]
 }
 
+//time schedule of each route need to add
 model RouteStop {
-    routeId         String         @map("route_id")
-    stopId          String         @map("stop_id")
-    sequence        Int            @map("sequence")
-    stopType        StopType       @map("stop_type")
+    routeId  String   @map("route_id")
+    stopId   String   @map("stop_id")
+    sequence Int      @map("sequence")
+    stopType StopType @map("stop_type")
 
-    route           Route          @relation(fields: [routeId], references: [id]) //references to Route.id (PK)
-    stop            Stop           @relation(fields: [stopId], references: [id]) //references to Stop.id (PK)
+    route Route @relation(fields: [routeId], references: [id]) //references to Route.id (PK)
+    stop  Stop  @relation(fields: [stopId], references: [id]) //references to Stop.id (PK)
     //routeId + stopId = connects FK to PK's of Route.id, Stop.id models
 
     @@id([routeId, stopId]) //ensure route+stop cant exist twice
@@ -55,11 +56,11 @@ model RouteStop {
 }
 
 model Stop {
-    id              String          @id @default(uuid())
-    name            String
-    latitude        Decimal         @db.Decimal(10, 8)
-    longitude       Decimal         @db.Decimal(11, 8)
-    routeStops      RouteStop[]
-    createdAt       DateTime        @default(now())
-    updatedAt       DateTime        @updatedAt
+    id         String      @id @default(uuid())
+    name       String
+    latitude   Decimal     @db.Decimal(10, 8)
+    longitude  Decimal     @db.Decimal(11, 8)
+    routeStops RouteStop[]
+    createdAt  DateTime    @default(now())
+    updatedAt  DateTime    @updatedAt
 }
