@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
-  postgres_db:
+  postgres:
     image: postgres:15-alpine
-    container_name: postgres_db
+    container_name: postgres
     restart: always
     environment:
       POSTGRES_USER: waypoint
@@ -21,9 +19,9 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - DATABASE_URL=postgresql://waypoint:waypoint_123@postgres_db:5432/waypoint_db?schema=public
+      - DATABASE_URL=postgresql://waypoint:waypoint_123@postgres:5432/waypoint_db?schema=public
     depends_on:
-      - postgres_db
+      - postgres
 
 volumes:
   postgres_data:

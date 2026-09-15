@@ -25,12 +25,16 @@
   "homepage": "https://github.com/averil08/waypoint-api#readme",
   "dependencies": {
     "@prisma/client": "6",
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "swagger-jsdoc": "^6.3.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.3.0",
+    "@types/swagger-jsdoc": "^6.0.4",
     "nodemon": "^3.1.14",
     "prisma": "6",
     "tsx": "^4.23.12",
