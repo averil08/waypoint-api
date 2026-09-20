@@ -7,7 +7,7 @@ const options: swaggerJsdoc.Options = {
             title: "Waypoint API",
             version: "1.0.0",
             description:
-                "An open, developer-first REST & GeoJSON API providing geolocated, community-verified jeepney terminal and boarding-point (*paradahan*) data for Baguio City.",
+                "An open, developer-first REST & GeoJSON API providing geolocated, community-verified jeepney terminal and boarding-point (*paradahan*) data for Baguio City. v1 is public and read-only: write operations (POST/PUT/DELETE) return 405 Method Not Allowed and will be enabled in v2 with API-key authentication and rate limiting.",
         },
         servers: [
             {
