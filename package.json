@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "description": "An open, developer-first REST & GeoJSON API providing geolocated, community-verified jeepney terminal and boarding-point (*paradahan*) data for Baguio City.",
   "main": "index.js",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "tsx src/index.ts",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
-    "prisma:seed": "prisma db seed",
+    "prisma seed": "prisma db seed",
     "prisma:studio": "prisma studio"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "repository": {
     "type": "git",
@@ -28,7 +34,8 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "swagger-jsdoc": "^6.3.0"
+    "swagger-jsdoc": "^6.3.0",
+    "tsx": "^4.23.12"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
@@ -37,7 +44,6 @@
     "@types/swagger-jsdoc": "^6.0.4",
     "nodemon": "^3.1.14",
     "prisma": "6",
-    "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }
 }

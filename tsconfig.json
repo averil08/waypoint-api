@@ -2,7 +2,9 @@
     "compilerOptions": {
         "target": "ES2022",
         "module": "commonjs",
-        "types": ["node"],
+        "types": [
+            "node"
+        ],
         "lib": [
             "ES2022"
         ],
@@ -28,5 +30,6 @@
     "exclude": [
         "node_modules",
         "dist"
-    ]
+    ],
+    "baseUrl": "./"
 }
