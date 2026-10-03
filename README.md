@@ -449,15 +449,17 @@ This allows the registry to distinguish between **known information and informat
 * [x] Configure PostgreSQL with Docker
 * [x] Run initial database migration (table creation)
 * [x] Implement Prisma client (prisma.ts)
+* [x] Deploy Backend to Render
+* [x] Implement repositories
+* [x] Implement services
+* [x] Implement controllers
+* [x] Implement API routes
+* [x] Collect and normalize transportation data
+* [x] Seed initial dataset
 
 ### In Progress
 
-* [ ] Implement repositories
-* [ ] Implement services
-* [ ] Implement controllers
-* [ ] Implement API routes
-* [ ] Collect and normalize transportation data
-* [ ] Seed initial dataset
+* [ ] Null
 
 ### Future
 
